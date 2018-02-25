@@ -1,0 +1,78 @@
+[{
+  "proj":"my_workflow",
+  "steps":[
+    {"name":"/first_action",
+      "machine":"Ma",
+      "start":"1519452811",
+      "end":"1519452826",
+      "next":["/my_action2","/my_branch"]
+    },
+    {
+      "name":"/my_action2",
+      "machine":"Mb",
+      "start":"1519452826",
+      "end":"1519452841",
+      "next":["my_branch/F"]
+    },
+    {
+      "name":"/my_branch",
+      "machine":"Mc",
+      "start":"1519452841",
+      "end":"1519452856",
+      "next":[]
+
+    },
+    {
+      "name":"my_branch/F",
+      "machine":"Ma",
+      "start":"1519452856",
+      "end":"1519452871",
+      "next":["/second_action"]
+    },
+    {
+      "name":"/second_action",
+      "machine":"Mb",
+      "start":"1519452871,",
+      "end":"1519452886",
+      "next":[]
+    }
+  ]
+},
+  {
+    "proj":"my_workflow/my_loop",
+    "steps":[
+      {"name":"/0",
+        "start":"1519452796",
+        "end":"1519452827",
+        "next":["/0/branch_in_loop","0/branch_in_loop/T"]
+      },
+      {
+        "name":"/0/branch_in_loop",
+        "start":"1519452826,",
+        "end":"1519452827",
+        "next":["0/branch_in_loop/decision"]
+      },
+      {
+        "name":"0/branch_in_loop/T",
+        "start":"1519452827",
+        "end":"1519452827",
+        "next":["0/branch_in_loop/decision","0/first_loop_action"]
+
+      },
+      {
+        "name":"0/branch_in_loop/decision",
+        "start":"1519452826",
+        "end":"1519452827",
+        "next":["0/first_loop_action"]
+      },
+      {
+        "name":"0/first_loop_action",
+        "start":"1519452811,",
+        "end":"1519452811",
+        "next":[]
+      }
+    ]
+
+
+  }
+]
